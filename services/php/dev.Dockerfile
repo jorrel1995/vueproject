@@ -31,9 +31,9 @@ RUN mv /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 COPY ./zzz.ini /usr/local/etc/php/conf.d
 
-RUN curl -L "https://github.com/elastic/apm-agent-php/releases/download/v1.14.1/apm-agent-php_1.14.1_amd64.deb" > /tmp/apm-agent-php.deb && \
-  dpkg -i /tmp/apm-agent-php.deb && \
-  rm /tmp/apm-agent-php.deb
+# RUN curl -L "https://github.com/elastic/apm-agent-php/releases/download/v1.14.1/apm-agent-php_1.14.1_amd64.deb" > /tmp/apm-agent-php.deb && \
+#   dpkg -i /tmp/apm-agent-php.deb && \
+#   rm /tmp/apm-agent-php.deb
 
 RUN curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x -o /tmp/nodesource_setup.sh
 

@@ -23,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->configureDefaults();
+        $this->app['request']->server->set('HTTPS', true);
+        // $this->configureDefaults();
     }
 
     protected function configureDefaults(): void
