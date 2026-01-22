@@ -13,10 +13,19 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $search = request('search');
+        $perPage = request('perPage', 10);
+        $users = User::query()
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
+            })
+            ->paginate($perPage);
 
         return Inertia::render('Users/Index', [
             'users' => $users,
+            'search' => $search,
+            'perPage' => $perPage,
         ]);
     }
 
