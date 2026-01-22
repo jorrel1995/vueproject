@@ -1,0 +1,28 @@
+name: Docker Build
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker Image
+      uses: docker/build-push-action@v5
+      with:
+        context: ./services/php
+        file: ./services/php/prod.Dockerfile
+        push: false
+        tags: user/app:latest
+        build-args: |
+          PHP_VERSION=8.3
+          NODE_VERSION=22
