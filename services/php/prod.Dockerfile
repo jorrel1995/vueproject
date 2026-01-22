@@ -16,7 +16,7 @@ RUN apt-get install -y libzip-dev zip \
 RUN apt-get install libsodium-dev -y \
   && docker-php-ext-install sodium
 
-  RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev libwebp-dev && \
+RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev libwebp-dev && \
   docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ --with-webp && \
   docker-php-ext-install gd
 
@@ -33,9 +33,9 @@ RUN echo "upload_max_filesize = 64M" >> /usr/local/etc/php/conf.d/zzz.ini
 
 COPY ./zzz.ini /usr/local/etc/php/conf.d
 
-RUN curl -L "https://github.com/elastic/apm-agent-php/releases/download/v1.14.1/apm-agent-php_1.14.1_arm64.deb" > /tmp/apm-agent-php.deb && \
-  dpkg -i /tmp/apm-agent-php.deb && \
-  rm /tmp/apm-agent-php.deb
+# RUN curl -L "https://github.com/elastic/apm-agent-php/releases/download/v1.14.1/apm-agent-php_1.14.1_arm64.deb" > /tmp/apm-agent-php.deb && \
+#   dpkg -i /tmp/apm-agent-php.deb && \
+#   rm /tmp/apm-agent-php.deb
 
 RUN curl -sL https://deb.nodesource.com/setup_$NODE_VERSION.x -o /tmp/nodesource_setup.sh
 
