@@ -19,4 +19,14 @@ class AdminController extends Controller
 
         return Inertia::render($page);
     }
+
+    public function dashboard()
+    {
+
+        $userCount = \App\Models\User::count();
+
+        return Inertia::render('Dashboard', [
+            'userCount' => $userCount,
+        ]);
+    }
 }

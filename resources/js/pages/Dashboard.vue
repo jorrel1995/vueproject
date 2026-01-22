@@ -7,6 +7,12 @@ import { type BreadcrumbItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
 import PlaceholderPattern from '../components/PlaceholderPattern.vue';
 
+defineProps<{
+    userCount: number;
+}>();
+
+
+
 const breadcrumbs: BreadcrumbItem[] = [
     {
         title: 'Dashboard',
@@ -26,7 +32,7 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div
                     class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
                 >
-                   <h1>Users</h1>
+                   <h1>Users <b>({{ userCount }})</b></h1>
                   <button class="btn">  <Link :href="'/admin/users'">Manage users</Link></button>
                   
                 </div>

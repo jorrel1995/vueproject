@@ -17,9 +17,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
         return view('admin.welcome');
     })->name('admin');
 
-    Route::get('dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('users.index');
