@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use App\UserService;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -11,16 +12,11 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(UserService $userService)
     {
         $search = request('search');
         $perPage = request('perPage', 10);
-        $users = User::query()
-            ->when($search, function ($query, $search) {
-                $query->where('name', 'like', "%{$search}%")
-                    ->orWhere('email', 'like', "%{$search}%");
-            })
-            ->paginate($perPage);
+        $users = $userService->searchUsers($search, $perPage);
 
         return Inertia::render('Users/Index', [
             'users' => $users,
