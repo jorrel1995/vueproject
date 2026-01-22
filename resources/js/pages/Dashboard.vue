@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { view } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
-
+import { Link } from '@inertiajs/vue3';
 import PlaceholderPattern from '../components/PlaceholderPattern.vue';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -26,7 +26,9 @@ const breadcrumbs: BreadcrumbItem[] = [
                 <div
                     class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
                 >
-                    <PlaceholderPattern />
+                   <h1>Users</h1>
+                  <button class="btn">  <Link :href="'/admin/users'">Manage users</Link></button>
+                  
                 </div>
                 <div
                     class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
