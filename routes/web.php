@@ -17,6 +17,10 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
         return view('admin.welcome');
     })->name('admin');
 
+    Route::get('dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('users.index');
         Route::get('/create', [UserController::class, 'create'])->name('users.create');
@@ -29,10 +33,6 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('developments', function () {
         return Inertia::render('Developments');
     })->name('developments');
-
-    // Route::get('dashboard', function () {
-    //     return Inertia::render('Dashboard');
-    // })->name('dashboard');
 
     Route::get('{page}', [AdminController::class, 'view'])->name('view');
 });
