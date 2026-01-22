@@ -29,12 +29,7 @@ const mainNavItems: NavItem[] = [
         title: 'Users',
         href: view('users'),
         icon: LayoutGrid,
-    },
-    {
-        title: 'Developments',
-        href: view('developments'),
-        icon: LayoutGrid,
-    },
+    }
 ];
 
 const footerNavItems: NavItem[] = [
