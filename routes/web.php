@@ -23,7 +23,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
         Route::post('/create', [UserController::class, 'store'])->name('users.store');
         Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
         Route::post('/{id}/edit', [UserController::class, 'update'])->name('users.update');
-        Route::delete('/{id}/delete', [UserController::class, 'destroy'])->name('users.delete');
+        Route::get('/{id}/delete', [UserController::class, 'destroy'])->name('users.delete');
     });
 
     Route::get('developments', function () {

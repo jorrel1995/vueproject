@@ -50,8 +50,11 @@ const breadcrumbs: BreadcrumbItem[] = [
                                 <td class="py-3 font-medium">{{ user.name }}</td>
                                 <td class="py-3">{{ user.email }}</td>
                                 <td class="py-3 text-right">
-                                    <button>
+                                    <button class="mr-2">
                                         <Link :href="`/admin/users/${user.id}/edit`" class="text-blue-500 hover:underline">Edit</Link>
+                                    </button>
+                                    <button class="mr-2">
+                                        <Link :href="`/admin/users/${user.id}/delete`" class="text-red-500 hover:underline">Delete</Link>
                                     </button>
                                 </td>
                             </tr>
